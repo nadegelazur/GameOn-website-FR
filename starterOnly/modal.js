@@ -30,6 +30,7 @@ const form = document.getElementById('form');
 
 const prenom = document.getElementById('first');
 const nom = document.getElementById('last');
+const email = document.getElementById('email');
 
 // Evenments
 form.addEventListener('submit', e => {
@@ -38,15 +39,11 @@ form.addEventListener('submit', e => {
   
   prenom_verify(prenom);
   nom_verify(nom);
+  email_verify(email);
+  
   
   
 })
-
-// function formVerify () {
-//   prenom_verify();
-// }
-
-
 
 // verification Prenom
 function prenom_verify(prenom) {
@@ -86,6 +83,23 @@ function nom_verify(nom) {
       } else {
           setSuccess(nom);
       }
+  }
+}
+// Test Regex Email
+function emailVerify(email) {
+  return /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(email);
+}
+// Verification email
+function email_verify(email) {
+  const emailValue = email.value.trim();
+  if(emailValue === "") {
+    let message = "Email ne peut pas être vide";
+    setError(email, message);
+  } else if(!emailVerify(emailValue)) {
+      let message = "Email non valide";
+      setError(email, message);
+  } else {
+      setSuccess(email);
   }
 }
 // FormData input
