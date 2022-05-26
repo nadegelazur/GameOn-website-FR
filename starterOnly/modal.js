@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -31,6 +32,7 @@ const form = document.getElementById('form');
 const prenom = document.getElementById('first');
 const nom = document.getElementById('last');
 const email = document.getElementById('email');
+const ddn = document.getElementById('birthdate');
 
 // Evenments
 form.addEventListener('submit', e => {
@@ -40,6 +42,7 @@ form.addEventListener('submit', e => {
   prenom_verify(prenom);
   nom_verify(nom);
   email_verify(email);
+  ddn_verify(ddn);
   
   
   
@@ -100,6 +103,16 @@ function email_verify(email) {
       setError(email, message);
   } else {
       setSuccess(email);
+  }
+}
+// Verification Date de naissance
+function ddn_verify(ddn) {
+  const ddnValue = ddn.value;
+  if(ddnValue === "") {
+      let message = "Vous devez entrer votre date de naissance";
+      setError(ddn, message);
+  } else {
+      setSuccess(ddn);
   }
 }
 // FormData input
