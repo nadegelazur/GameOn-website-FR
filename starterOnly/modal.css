@@ -210,12 +210,27 @@ input[data-error]::after {
   position: relative;
   margin-bottom: 15px;
 }
+.formData.error input {
+  box-shadow: 0 0 15px red;
+}
+.formData.success input{
+  box-shadow: 0 0 15px blue;
+}
 .formData i {
   position: absolute;
   top: 50px;
   right: 10px;
-  visibility: hidden;
+  visibility: hidden; 
 }
+.formData.success i.fa-check-circle {
+  color: blue;
+  visibility: visible;
+}
+.formData.error i.fa-circle-exclamation {
+  color: red;
+  visibility: visible;
+}
+/* JS ajout la class error */
 .formData small {
   position: absolute;
   color: #f00;
@@ -226,12 +241,7 @@ input[data-error]::after {
 .formData.error small {
   visibility: visible;
 }
-.formData.success input{
-  box-shadow: 0 0 15px blue;
-}
-.formData.error input {
-  box-shadow: 0 0 15px red;
-}
+
 #city div {
   position: absolute;
   color: #f00;
@@ -239,24 +249,10 @@ input[data-error]::after {
   visibility: hidden;  
   display: block;
 }
-/* JS ajout la class error */
-.formData.error small {
-  visibility: visible;
-}
-.formData.error input{
-  box-shadow: 0 0 15px red;
-}
-.formData.success input{
-  box-shadow: 0 0 15px blue;
-}
-.formData.success i.fa-circle-check {
-  color: blue;
-  visibility: visible;
-}
-.formData.error i.fa-circle-exclamation {
-  color: red;
-  visibility: visible;
-}
+
+
+
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;

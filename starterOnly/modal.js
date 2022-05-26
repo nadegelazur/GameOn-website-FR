@@ -29,6 +29,7 @@ modalbg.style.display = "none";
 const form = document.getElementById('form');
 
 const prenom = document.getElementById('first');
+const nom = document.getElementById('last');
 
 // Evenments
 form.addEventListener('submit', e => {
@@ -36,6 +37,7 @@ form.addEventListener('submit', e => {
   console.log('ok');
   
   prenom_verify(prenom);
+  nom_verify(nom);
   
   
 })
@@ -66,7 +68,26 @@ function prenom_verify(prenom) {
       }
   }
 }
-
+// Verification Nom
+function nom_verify(nom) {
+  const nomValue = nom.value.trim();
+  if(nomValue === "") {
+      // on passe dans la fonction le nom du champ et ne pas la valeur
+      let message = "Le champ Nom ne doit pas être vide";
+      setError(nom, message);
+  } else if(!nomValue.match(/^[a-zA-Z]/)) {
+      let message = "Le champ Nom doit commencer par une lettre";
+      setError(nom, message);
+  } else {
+      let letterNum = nomValue.length;
+      if(letterNum < 2) {
+          let message = "Le champ Nom doit avoir au moins 2 caractères";
+          setError(nom, message);
+      } else {
+          setSuccess(nom);
+      }
+  }
+}
 // FormData input
 function setError(input, message) {
   // je recupere le div dans laquelle se trouve input
