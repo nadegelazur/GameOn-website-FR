@@ -33,6 +33,8 @@ const prenom = document.getElementById('first');
 const nom = document.getElementById('last');
 const email = document.getElementById('email');
 const ddn = document.getElementById('birthdate');
+const quantity = document.getElementById('quantity');
+const checkbox = document.getElementById('formAgreement');
 
 // Evenments
 form.addEventListener('submit', e => {
@@ -43,6 +45,7 @@ form.addEventListener('submit', e => {
   nom_verify(nom);
   email_verify(email);
   ddn_verify(ddn);
+  quantity_verify(quantity);
   
   
   
@@ -113,6 +116,16 @@ function ddn_verify(ddn) {
       setError(ddn, message);
   } else {
       setSuccess(ddn);
+  }
+}
+// Verification combien de tournois
+function quantity_verify(quantity) {
+  const quantityValue = quantity.value;
+  if(quantityValue === "") {
+      let message = "Une valeur numérique doit être saisie";
+      setError(quantity, message);
+  } else {
+      setSuccess(quantity);
   }
 }
 // FormData input
