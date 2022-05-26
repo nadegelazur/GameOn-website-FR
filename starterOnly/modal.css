@@ -234,7 +234,7 @@ input[data-error]::after {
 .formData small {
   position: absolute;
   color: #f00;
-  font-size: 15px;
+  font-size: 12px;
   visibility: hidden;
   display: block;
 }
@@ -245,13 +245,15 @@ input[data-error]::after {
 #city div {
   position: absolute;
   color: #f00;
-  font-size: 15px;
+  font-size: 12px;
   visibility: hidden;  
   display: block;
 }
 
 
-
+.checkbox {
+  padding-bottom: 2rem;
+}
 
 .checkbox-label,
 .checkbox2-label {
@@ -295,9 +297,7 @@ input[data-error]::after {
 }
 .checkbox small {
   position: absolute;
-  bottom: -14px;
-  left: 10px;
-  font-size: 15px;
+  font-size: 12px;
   color: #f00;
   visibility: hidden;
 }

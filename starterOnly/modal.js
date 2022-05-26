@@ -47,6 +47,7 @@ form.addEventListener('submit', e => {
   ddn_verify(ddn);
   quantity_verify(quantity);
   city_verify(cityArray);
+  checkbox_verify(checkbox);
   
 })
 
@@ -153,11 +154,24 @@ function city_verify() {
             cityError.style.visibility = "hidden";
         }
 }
+// Verification d'acceptation de condition générale
+function checkbox_verify(checkbox) {
+  //const checkbox = document.getElementById('formAgreement');
+  if(checkbox.checked === false) {
+    
+    let message = "La case de conditions générales doit être cochée";
+    Error(checkbox, message);
+
+  } else {
+      Success(checkbox);
+  }
+}
+
 // FormData input
 function setError(input, message) {
   // je recupere le div dans laquelle se trouve input
   const formData = input.parentElement;
-  const small = formData.querySelector('#city small');
+  const small = formData.querySelector('small');
   //Ajout du message d'erreur
   small.innerText = message;
   //Ajout de la classe erreur
@@ -166,4 +180,15 @@ function setError(input, message) {
 function setSuccess(input) {
   const formData = input.parentElement;
   formData.className = "formData success";
+}
+// Checkbox input
+function Error(input, message) {
+  const checkBox = input.parentElement;
+  const small = checkBox.querySelector('small');
+  small.innerText = message;
+  checkBox.className = "checkbox error";
+}
+function Success(input) {
+  const checkBox = input.parentElement;
+  checkBox.classList.remove("error")
 }
