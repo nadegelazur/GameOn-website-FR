@@ -46,8 +46,7 @@ form.addEventListener('submit', e => {
   email_verify(email);
   ddn_verify(ddn);
   quantity_verify(quantity);
-  
-  
+  city_verify(cityArray);
   
 })
 
@@ -128,11 +127,37 @@ function quantity_verify(quantity) {
       setSuccess(quantity);
   }
 }
+// Verification location
+const city = document.querySelector('input[name="location"]');
+const cityError = document.querySelector("#city div");
+//tableau des boutons radios
+let cityArray = [
+//création d'un variable qui récupère tout les boutons radios du DOM
+    document.querySelector("#location1"),
+    document.querySelector("#location2"),
+    document.querySelector("#location3"),
+    document.querySelector("#location4"),
+    document.querySelector("#location5"),
+    document.querySelector("#location6"),
+];
+function city_verify() {
+    if (!cityArray[0].checked &&
+        !cityArray[1].checked &&
+        !cityArray[2].checked &&
+        !cityArray[3].checked &&
+        !cityArray[4].checked &&
+        !cityArray[5].checked) {
+        // si l'un des boutons n'est pas cochés donc message d'erreur
+            cityError.style.visibility = "visible";
+        } else {
+            cityError.style.visibility = "hidden";
+        }
+}
 // FormData input
 function setError(input, message) {
   // je recupere le div dans laquelle se trouve input
   const formData = input.parentElement;
-  const small = formData.querySelector('small');
+  const small = formData.querySelector('#city small');
   //Ajout du message d'erreur
   small.innerText = message;
   //Ajout de la classe erreur
