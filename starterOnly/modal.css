@@ -145,9 +145,37 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
+.bground_2 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+.bground_2.active {
+  display: block;
+} 
 .content {
   margin: 5% auto;
   width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+.content_2 {
+  margin: 5% auto;
+  width: 100%;
+  min-height: 100vh;
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
@@ -358,7 +386,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.close_btn {
   background: #fe142f;
   display: block;
   margin: 0 auto;

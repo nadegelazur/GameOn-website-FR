@@ -12,7 +12,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -26,68 +25,109 @@ closeModal.addEventListener('click', function(e) {
 modalbg.style.display = "none";
 //console.log('ok');
 })
+
+// Modal de comfirmation
+const modalContainer = document.querySelector('.bground_2');
+const closeBtn = document.querySelector('.close_btn');
+const modalTriggers = document.querySelectorAll('.modal-trigger');
+
+modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal));
+
+function toggleModal() {
+  modalContainer.classList.toggle("active")
+  modalbg.style.display = "none";
+}
+
 // La recuperation des elements
 const form = document.getElementById('form');
 
-const prenom = document.getElementById('first');
+
 const nom = document.getElementById('last');
 const email = document.getElementById('email');
 const ddn = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const checkbox = document.getElementById('formAgreement');
 
-// Evenments
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  console.log('ok');
-  
+//Evenments
+ form.addEventListener('submit', e => {
+   e.preventDefault();
+
+   form_verify();
+   
+
+ })
+
+
+
+
+
+function form_verify() {
+
   prenom_verify(prenom);
   nom_verify(nom);
   email_verify(email);
   ddn_verify(ddn);
   quantity_verify(quantity);
-  city_verify(cityArray);
-  checkbox_verify(checkbox);
-  
-})
+  const cityCheck = city_verify(cityArray);
+  const checkCheck = checkbox_verify(checkbox);
 
+  if(document.querySelectorAll('.success').length = 5 && cityCheck && checkCheck) {
+    console.log('ok');
+    toggleModal();
+    // function initialise
+
+  }
+
+
+}
+const prenom = document.getElementById('first');
+prenom.addEventListener('keyup', e => {
+  prenom_verify(prenom);
+
+})
 // verification Prenom
 function prenom_verify(prenom) {
-  const prenomValue = prenom.value.trim();
-  if(prenomValue === "") {
+  if(prenom.value.trim() === "") {
       // on passe dans la fonction le nom du champ et ne pas la valeur
       let message = "Le champ Prénom ne doit pas être vide";
       setError(prenom, message);
-  } else if(!prenomValue.match(/^[a-zA-Z]/)) {
+      return false;
+  } else if(!prenom.value.match(/^[a-zA-Z]/)) {
       let message = "Le champ Prénom doit commencer par une lettre";
       setError(prenom, message);
+      return false;
   } else {
-      let letterNum = prenomValue.length;
+      let letterNum = prenom.value.length;
       if(letterNum < 2) {
           let message = "Le champ Prénom doit avoir au moins 2 caractères";
           setError(prenom, message);
+          return false;
       } else {
           setSuccess(prenom);
+          return true;
       }
   }
 }
 // Verification Nom
 function nom_verify(nom) {
-  const nomValue = nom.value.trim();
-  if(nomValue === "") {
+  if(nom.value.trim() === "") {
       // on passe dans la fonction le nom du champ et ne pas la valeur
       let message = "Le champ Nom ne doit pas être vide";
       setError(nom, message);
-  } else if(!nomValue.match(/^[a-zA-Z]/)) {
+      return false;
+  } else if(!nom.value.match(/^[a-zA-Z]/)) {
       let message = "Le champ Nom doit commencer par une lettre";
       setError(nom, message);
+      return false;
   } else {
-      let letterNum = nomValue.length;
+      let letterNum = nom.value.length;
       if(letterNum < 2) {
           let message = "Le champ Nom doit avoir au moins 2 caractères";
           setError(nom, message);
+          return false;
       } else {
           setSuccess(nom);
+          return true;
       }
   }
 }
@@ -97,37 +137,52 @@ function emailVerify(email) {
 }
 // Verification email
 function email_verify(email) {
-  const emailValue = email.value.trim();
-  if(emailValue === "") {
+  if(email.value.trim() === "") {
     let message = "Email ne peut pas être vide";
     setError(email, message);
-  } else if(!emailVerify(emailValue)) {
+    return false;
+  } else if(!emailVerify(email.value.trim())) {
       let message = "Email non valide";
       setError(email, message);
+      return false;
   } else {
       setSuccess(email);
+      return true;
   }
 }
 // Verification Date de naissance
 function ddn_verify(ddn) {
-  const ddnValue = ddn.value;
-  if(ddnValue === "") {
+  if(ddn.value === "") {
       let message = "Vous devez entrer votre date de naissance";
       setError(ddn, message);
+      return false;
   } else {
       setSuccess(ddn);
+      return true;
   }
 }
 // Verification combien de tournois
 function quantity_verify(quantity) {
-  const quantityValue = quantity.value;
-  if(quantityValue === "") {
+  if(quantity.value === "") {
       let message = "Une valeur numérique doit être saisie";
       setError(quantity, message);
+      return false;
   } else {
       setSuccess(quantity);
+      return true;
   }
 }
+
+// const radios = document.querySelectorAll('input[type="radio"]:checked')
+
+// if (radios.length == 0) {
+//   // si l'un des boutons n'est pas cochés donc message d'erreur
+//   cityError.style.visibility = "visible";
+//   return false;
+// } else {
+//   cityError.style.visibility = "hidden";
+//   return true;
+// }
 // Verification location
 const city = document.querySelector('input[name="location"]');
 const cityError = document.querySelector("#city div");
@@ -150,8 +205,10 @@ function city_verify() {
         !cityArray[5].checked) {
         // si l'un des boutons n'est pas cochés donc message d'erreur
             cityError.style.visibility = "visible";
+            return false;
         } else {
             cityError.style.visibility = "hidden";
+            return true;
         }
 }
 // Verification d'acceptation de condition générale
@@ -161,9 +218,11 @@ function checkbox_verify(checkbox) {
     
     let message = "La case de conditions générales doit être cochée";
     Error(checkbox, message);
+    return false;
 
   } else {
       Success(checkbox);
+      return true;
   }
 }
 
@@ -192,3 +251,16 @@ function Success(input) {
   const checkBox = input.parentElement;
   checkBox.classList.remove("error")
 }
+
+// //initialisation de tous les champs du formulaire
+// function initializeFields() {
+//   prenom.value = null;
+//   nom.value = null;
+//   email.value = null;
+//   ddn.value = null;
+//   quantity.value = null;
+//   city.checked = false;
+//   checkbox.checked = false;
+//   setSuccess(input)
+//   Success(input);
+// }
