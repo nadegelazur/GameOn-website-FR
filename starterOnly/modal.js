@@ -42,10 +42,7 @@ function toggleModal() {
 const form = document.getElementById('form');
 
 
-const nom = document.getElementById('last');
-const email = document.getElementById('email');
-const ddn = document.getElementById('birthdate');
-const quantity = document.getElementById('quantity');
+
 const checkbox = document.getElementById('formAgreement');
 
 //Evenments
@@ -54,15 +51,9 @@ const checkbox = document.getElementById('formAgreement');
 
    form_verify();
    
-
  })
 
-
-
-
-
 function form_verify() {
-
   prenom_verify(prenom);
   nom_verify(nom);
   email_verify(email);
@@ -75,17 +66,15 @@ function form_verify() {
     console.log('ok');
     toggleModal();
     // function initialise
-
   }
-
-
 }
+// verification Prenom
 const prenom = document.getElementById('first');
 prenom.addEventListener('keyup', e => {
   prenom_verify(prenom);
 
 })
-// verification Prenom
+
 function prenom_verify(prenom) {
   if(prenom.value.trim() === "") {
       // on passe dans la fonction le nom du champ et ne pas la valeur
@@ -109,6 +98,11 @@ function prenom_verify(prenom) {
   }
 }
 // Verification Nom
+const nom = document.getElementById('last');
+nom.addEventListener('keyup', e => {
+  nom_verify(nom);
+})
+
 function nom_verify(nom) {
   if(nom.value.trim() === "") {
       // on passe dans la fonction le nom du champ et ne pas la valeur
@@ -131,11 +125,13 @@ function nom_verify(nom) {
       }
   }
 }
-// Test Regex Email
-function emailVerify(email) {
-  return /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(email);
-}
+
 // Verification email
+const email = document.getElementById('email');
+email.addEventListener('keyup', e => {
+  email_verify(email);
+})
+
 function email_verify(email) {
   if(email.value.trim() === "") {
     let message = "Email ne peut pas être vide";
@@ -150,7 +146,16 @@ function email_verify(email) {
       return true;
   }
 }
+// Test Regex Email
+function emailVerify(email) {
+  return /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(email);
+}
 // Verification Date de naissance
+const ddn = document.getElementById('birthdate');
+ddn.addEventListener('input', e => {
+  ddn_verify(ddn);
+})
+
 function ddn_verify(ddn) {
   if(ddn.value === "") {
       let message = "Vous devez entrer votre date de naissance";
@@ -162,6 +167,10 @@ function ddn_verify(ddn) {
   }
 }
 // Verification combien de tournois
+const quantity = document.getElementById('quantity');
+quantity.addEventListener('input', e => {
+  quantity_verify(quantity);
+})
 function quantity_verify(quantity) {
   if(quantity.value === "") {
       let message = "Une valeur numérique doit être saisie";
@@ -176,7 +185,7 @@ function quantity_verify(quantity) {
 // const radios = document.querySelectorAll('input[type="radio"]:checked')
 
 // if (radios.length == 0) {
-//   // si l'un des boutons n'est pas cochés donc message d'erreur
+   // si l'un des boutons n'est pas cochés donc message d'erreur
 //   cityError.style.visibility = "visible";
 //   return false;
 // } else {
@@ -186,6 +195,7 @@ function quantity_verify(quantity) {
 // Verification location
 const city = document.querySelector('input[name="location"]');
 const cityError = document.querySelector("#city div");
+
 //tableau des boutons radios
 let cityArray = [
 //création d'un variable qui récupère tout les boutons radios du DOM
