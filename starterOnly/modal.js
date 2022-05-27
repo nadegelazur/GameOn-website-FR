@@ -43,7 +43,7 @@ const form = document.getElementById('form');
 
 
 
-const checkbox = document.getElementById('formAgreement');
+
 
 //Evenments
  form.addEventListener('submit', e => {
@@ -181,7 +181,10 @@ function quantity_verify(quantity) {
       return true;
   }
 }
-
+// const checkbox = document.getElementById('formAgreement');
+// checkbox.addEventListener('input', e => {
+//   checkbox_verify(checkbox);
+// })
 // const radios = document.querySelectorAll('input[type="radio"]:checked')
 
 // if (radios.length == 0) {
@@ -222,16 +225,21 @@ function city_verify() {
         }
 }
 // Verification d'acceptation de condition générale
+const checkbox = document.getElementById('formAgreement');
+checkbox.addEventListener('input', e => {
+  checkbox_verify(checkbox);
+})
+
 function checkbox_verify(checkbox) {
   //const checkbox = document.getElementById('formAgreement');
-  if(checkbox.checked === false) {
-    
+  if(checkbox.checked === false) { 
     let message = "La case de conditions générales doit être cochée";
     Error(checkbox, message);
     return false;
 
   } else {
       Success(checkbox);
+      console.log('true');
       return true;
   }
 }
@@ -256,10 +264,13 @@ function Error(input, message) {
   const small = checkBox.querySelector('small');
   small.innerText = message;
   checkBox.className = "checkbox error";
+  console.log('error');
 }
 function Success(input) {
   const checkBox = input.parentElement;
-  checkBox.classList.remove("error")
+  //checkBox.classList.remove("checkbox error");
+  checkBox.className = "checkbox success"
+  console.log('success');
 }
 
 // //initialisation de tous les champs du formulaire

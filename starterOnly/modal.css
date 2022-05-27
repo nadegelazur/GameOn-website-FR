@@ -269,7 +269,6 @@ input[data-error]::after {
 .formData.error small {
   visibility: visible;
 }
-
 #city div {
   position: absolute;
   color: #f00;
@@ -277,10 +276,25 @@ input[data-error]::after {
   visibility: hidden;  
   display: block;
 }
-
-
 .checkbox {
   padding-bottom: 2rem;
+}
+.checkbox-input {
+  display: none;
+}
+.checkbox small {
+  position: absolute;
+  font-size: 12px;
+  color: #f00;
+  visibility: hidden;
+  display: block;
+}
+/* JS ajout la class error */
+.checkbox.error small {
+  visibility: visible;
+}
+.checkbox.error .agree_req .checkbox-icon {
+  box-shadow: 0 0 15px red;
 }
 
 .checkbox-label,
@@ -320,22 +334,7 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
-.checkbox-input {
-  display: none;
-}
-.checkbox small {
-  position: absolute;
-  font-size: 12px;
-  color: #f00;
-  visibility: hidden;
-}
-/* JS ajout la class error */
-.checkbox.error small {
-  visibility: visible;
-}
-.checkbox.error .agree_req .checkbox-icon {
-  box-shadow: 0 0 15px red;
-}
+
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
