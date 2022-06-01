@@ -1,10 +1,35 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+// function editNav() {
+//   var x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
+// BURGER Menu
+// Menu Burger
+const iconMenu = document.querySelector('.menu__icon');
+const menuBody = document.querySelector('.menu__body');
+const heroContent = document.querySelector('.hero-content');
+// проверяем существует ли бьект с таким классом
+if(iconMenu) {   
+    // создаем событие клик по иконке
+    iconMenu.addEventListener("click", function(e) {
+        // чтоб не скролилось сайт сзади выдвигающегося меню
+        document.body.classList.toggle('_lock');
+        iconMenu.classList.toggle('_active');
+        menuBody.classList.toggle('_active');
+        heroContent.classList.toggle('_active');
+    })
+}
+
+function onMenuLinkClick(e) {
+    if(iconMenu.classList.contains('_active')) {
+        document.body.classList.remove('_lock');
+        iconMenu.classList.remove('_active');
+        menuBody.classList.remove('_active');
+        heroContent.classList.remove('_active');
+    }    
 }
 
 // DOM Elements
@@ -41,16 +66,11 @@ function toggleModal() {
 // La recuperation des elements
 const form = document.getElementById('form');
 
-
-
-
-
 //Evenments
  form.addEventListener('submit', e => {
    e.preventDefault();
 
-   form_verify();
-   
+   form_verify(); 
  })
 
 function form_verify() {
@@ -62,12 +82,13 @@ function form_verify() {
   const cityCheck = city_verify(cityArray);
   const checkCheck = checkbox_verify(checkbox);
 
-  if(document.querySelectorAll('.success').length = 5 && cityCheck && checkCheck) {
+  if(document.querySelectorAll('.success').length >= 5 && cityCheck && checkCheck) {
     console.log('ok');
     toggleModal();
     // function initialise
-  }
+    } 
 }
+
 // verification Prenom
 const prenom = document.getElementById('first');
 prenom.addEventListener('keyup', e => {
@@ -181,10 +202,7 @@ function quantity_verify(quantity) {
       return true;
   }
 }
-// const checkbox = document.getElementById('formAgreement');
-// checkbox.addEventListener('input', e => {
-//   checkbox_verify(checkbox);
-// })
+
 // const radios = document.querySelectorAll('input[type="radio"]:checked')
 
 // if (radios.length == 0) {
@@ -196,19 +214,12 @@ function quantity_verify(quantity) {
 //   return true;
 // }
 // Verification location
-const city = document.querySelector('input[name="location"]');
+//const city = document.querySelector('input[name="location"]');
 const cityError = document.querySelector("#city div");
+const radios = document.querySelectorAll('input[type="radio"]:checked')
 
-//tableau des boutons radios
-let cityArray = [
-//création d'un variable qui récupère tout les boutons radios du DOM
-    document.querySelector("#location1"),
-    document.querySelector("#location2"),
-    document.querySelector("#location3"),
-    document.querySelector("#location4"),
-    document.querySelector("#location5"),
-    document.querySelector("#location6"),
-];
+let cityArray = document.querySelectorAll('input[type="radio"]');
+
 function city_verify() {
     if (!cityArray[0].checked &&
         !cityArray[1].checked &&
@@ -229,7 +240,6 @@ const checkbox = document.getElementById('formAgreement');
 checkbox.addEventListener('input', e => {
   checkbox_verify(checkbox);
 })
-
 function checkbox_verify(checkbox) {
   //const checkbox = document.getElementById('formAgreement');
   if(checkbox.checked === false) { 
@@ -239,7 +249,7 @@ function checkbox_verify(checkbox) {
 
   } else {
       Success(checkbox);
-      console.log('true');
+      //console.log('true');
       return true;
   }
 }
@@ -264,13 +274,13 @@ function Error(input, message) {
   const small = checkBox.querySelector('small');
   small.innerText = message;
   checkBox.className = "checkbox error";
-  console.log('error');
+  //console.log('error');
 }
 function Success(input) {
   const checkBox = input.parentElement;
   //checkBox.classList.remove("checkbox error");
   checkBox.className = "checkbox success"
-  console.log('success');
+  //console.log('success');
 }
 
 // //initialisation de tous les champs du formulaire

@@ -14,20 +14,31 @@
   </head>
   <body>
     <!--HEADER-->
-    <header class="topnav" id="myTopnav">
+    <header class="header" id="myTopnav">
       <div class="header-logo">
-        <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="logo.png" width="auto" height="auto" />
       </div>
-      <nav class="main-navbar">  
-          <a href="#" class="active"><span>Accueil</span></a>
+      <!-- <nav class="menu__body">  
+          <a href="#" class="menu__link"><span>Accueil</span></a>
           <a href="#"><span>Détails de l'évènement</span></a>
           <a href="#"><span>À propos</span></a>
           <a href="#"><span>Contact</span></a>
           <a href="#"><span>Évènements passés</span></a>
-          <a href="javascript:void(0);" class="icon" onclick="editNav()">
-            <i class="fa fa-bars"></i>
-          </a>
-      </nav>
+      </nav> -->
+      <div class="header__menu menu">
+        <div class="menu__icon">
+          <span></span>
+        </div>
+        <nav class="menu__body">
+          <ul class="menu__list">
+            <li><a href="index.html" class="menu__link">Accueil</a></li>
+            <li><a href="#" class="menu__link">Détails de l'évènement</a></li>
+            <li><a href="#" class="menu__link">À propos</a></li>
+            <li><a href="#" class="menu__link">Contact</a></li>
+            <li><a href="#" class="menu__link">Évènements passés</a></li>
+          </ul>    
+        </nav>
+    </div> 
     </header>
     <!--MAIN-->
     <main>
@@ -148,7 +159,7 @@
         <div class="content_2">
           <span class="close modal-trigger" aria-label="close modal"></span>
           <div class="modal-body" role="dialog" aria-describedby="dialogDesc">
-              <p id="dialogDesc" class="text-label">Merci pour votre inscription</p>
+              <p id="dialogDesc" class="text-label">Merci pour<br> votre inscription</p>
               <!-- BUTTON SUBMIT -->
                <input class="close_btn modal-trigger" type="button" value="Fermer"/>
           </div>
