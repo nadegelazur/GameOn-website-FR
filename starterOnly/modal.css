@@ -564,7 +564,7 @@ footer {
   }
   .hero-headline {
     font-size: 75px;
-    line-height: 100px;
+    line-height: 90px;
   }
   .btn-signup {
     margin-top: 62px;
@@ -652,6 +652,7 @@ footer {
       font-size: 28px;
       color: #fff;
       font-weight: 200;
+      padding: 2px 0px;
   }
   .menu__link:hover {
       background-color: #23232336;
@@ -693,27 +694,37 @@ footer {
     padding: 12px 35px;
   }
   .bground {
-    top: 75px;
+    top: 100px;
+  }
+  .content {
+    margin: 0 auto;
   }
   .copyrights {
     margin-top: 50px;
     text-align: center;
   }
 }
-@media screen and (max-width: 714px) {
+@media screen and (max-width: 724px) {
   .hero-headline {
-    font-size: 4rem;
+    font-size: 3.7rem;
     white-space: normal;
-}
-
+  }
 }
 @media screen and (max-width: 645px) {
   .header-logo img {
     width: 75%;
   }
+  .menu__body {
+    top: 4.5rem;
+  }
+  .menu__link {
+    font-size: 20px;
+    padding: 5px 0px;
+  }
   .hero-headline {
     font-size: 3.5rem;
     white-space: normal;
+    line-height: 70px;
   }
   .menu__icon {
     margin-top: 6px;
@@ -724,7 +735,19 @@ footer {
     width: 35px;    
   }
 }
-
+@media screen and (max-width: 586px) {
+  .menu__link {
+    font-size: 18px;
+  }
+  .hero-headline {
+    font-size: 3rem;
+    white-space: normal;
+    line-height: 70px;
+  }
+  .menu__body {
+    top: 4.5rem;
+  }
+}
 
 
 
