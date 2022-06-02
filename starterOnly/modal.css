@@ -30,6 +30,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+body._lock {
+  overflow: hidden;
+}
 header{
   flex: 0 0 auto;
 }
@@ -724,12 +727,18 @@ footer {
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
-  .bground {
-    top: 100px;
-  }
-  .content {
+  
+  .content,
+  .bground_2 {
     margin: 0 auto;
   }
+  .bground{
+    top: 90px;
+  }
+  .bground_2{
+    top: 90px;
+  }
+  
   .copyrights {
     margin-top: 50px;
     text-align: center;
