@@ -36,12 +36,13 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  //document.body.classList.toggle('_lock');
+  document.body.classList.toggle('_lock');
 }
 // close modal event
 const closeModal = document.querySelector(".close");
 closeModal.addEventListener('click', function(e) {
 modalbg.style.display = "none";
+clearModal();
 //console.log('ok');
 })
 
@@ -68,21 +69,24 @@ const form = document.getElementById('form');
  })
 
 function form_verify() {
-  prenom_verify(prenom);
-  nom_verify(nom);
-  email_verify(email);
-  ddn_verify(ddn);
-  quantity_verify(quantity);
+  const prenomCheck = prenom_verify(prenom);
+  const nomCheck = nom_verify(nom);
+  const emailCheck = email_verify(email);
+  const ddnCheck = ddn_verify(ddn);
+  const quantityCheck = quantity_verify(quantity);
   const cityCheck = city_verify(cityArray);
   const checkCheck = checkbox_verify(checkbox);
 
-  if(document.querySelectorAll('.success').length >= 5 && cityCheck && checkCheck) {
+  if(prenomCheck && nomCheck && cityCheck && emailCheck && ddnCheck && quantityCheck && checkCheck) {
     console.log('ok');
     toggleModal();
     // function initialise
     } 
 }
 
+function clearModal(){
+  prenom.value = "";
+}
 // verification Prenom
 const prenom = document.getElementById('first');
 prenom.addEventListener('keyup', e => {
@@ -197,22 +201,17 @@ function quantity_verify(quantity) {
   }
 }
 
-// const radios = document.querySelectorAll('input[type="radio"]:checked')
-
-// if (radios.length == 0) {
-   // si l'un des boutons n'est pas cochés donc message d'erreur
-//   cityError.style.visibility = "visible";
-//   return false;
-// } else {
-//   cityError.style.visibility = "hidden";
-//   return true;
-// }
 // Verification location
-//const city = document.querySelector('input[name="location"]');
+let cityArray = document.querySelectorAll('input[type="radio"]');
+
+for (const radio of cityArray) {
+  radio.onclick = (e) => {
+    cityError.style.visibility = "hidden";
+  }
+}
+//
 const cityError = document.querySelector("#city div");
 const radios = document.querySelectorAll('input[type="radio"]:checked')
-
-let cityArray = document.querySelectorAll('input[type="radio"]');
 
 function city_verify() {
     if (!cityArray[0].checked &&
