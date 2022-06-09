@@ -1,4 +1,3 @@
-
 // BURGER Menu
 // Menu Burger
 const iconMenu = document.querySelector('.menu__icon');
@@ -27,6 +26,7 @@ function onMenuLinkClick(e) {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const footer = document.querySelector(".copyrights");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
@@ -36,6 +36,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  footer.style.display = "none";
   document.body.classList.toggle('_lock');
 }
 // close modal event
@@ -66,6 +67,7 @@ const form = document.getElementById('form');
    e.preventDefault();
 
    form_verify(); 
+   
  })
 
 function form_verify() {
@@ -86,6 +88,12 @@ function form_verify() {
 
 function clearModal(){
   prenom.value = "";
+  nom.value = "";
+  email.value = "";
+  ddn.value = "";
+  quantity.value = "";
+  cityArray.values = "";
+  checkbox.value = "";
 }
 // verification Prenom
 const prenom = document.getElementById('first');
