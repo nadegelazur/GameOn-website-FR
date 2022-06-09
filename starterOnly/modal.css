@@ -57,12 +57,6 @@ img {
   align-items: center;
   justify-content: space-between;
 }
-/* .header-logo {
-    float: left;
-}
-.menu__body {
-    float: right;
-} */
 .menu__link {
   /* float: left; */
   display: block;
@@ -93,10 +87,8 @@ main {
   font-size: 130%;
   font-weight: bolder;
   color: black;
-  
   padding-left: 100px;
   padding-right: 101px;
-  /* margin: 1px 20px 15px; */
   border-radius: 2rem;
   text-align: justify;
 }
@@ -114,8 +106,7 @@ main {
 .modal-btn:hover {
   background: #3876ac;
 }
-.footer {
-  
+.footer { 
   padding: 99px 0px 63px 40px;
   font-family: var(--font-slab);
   font-size: 15px;
@@ -133,9 +124,7 @@ main {
 .button:hover {
   background: #3876ac;
 }
-/* .smFont {
-  font-size: 16px;
-} */
+
 /* MODAL D'INSCRIPTION */
 .bground {
   display: none;
@@ -146,7 +135,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #fff;
+  background-color: rgba(26, 39, 156, 0.4);
 }
 .bground_2 {
   display: none;
@@ -157,18 +146,19 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #fff;
+  background-color: rgba(26, 39, 156, 0.4);
 }
 .bground_2.active {
   display: block;
 } 
+/* .bground,
+.bground_2 {
+    top: 20px;
+  } */
 .content {
-  margin: 0 auto; 
-  /* margin: 225px auto; */
+  margin: 5% auto;
   width: 100%;
-  max-width: 536px;
-  max-height: 900px;
-  height: 100%;
+  max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -177,9 +167,12 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.43);
+  -webkit-box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.43);
+  -moz-box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.43);
 }
 .content_2 {
-  margin: 0 auto; 
+  margin: 5% auto; 
   width: 100%;
   height: 100%;
   max-height: 876px;
@@ -198,6 +191,7 @@ main {
   flex-direction: column;
   align-items: center;
 }
+
 #dialogDesc {
   position: absolute;
   top: 40%;
@@ -619,15 +613,11 @@ footer {
   .header-logo img {
     width: 70%; 
   }
-  /* .header {
-    position: fixed;
-  } */
   /* Icon Burger */
   .menu__icon {
     display: block;
     position: relative;
     z-index: 5;
-    
     width: 44px;
     height: 22px;
     cursor: pointer;
@@ -671,7 +661,7 @@ footer {
   /* masquer le menu body */
   .menu__body {
     position: absolute;
-    top: 6.2rem;
+    top: 5.2rem;
     left: -100%;
     width: 100%;
     height: 55%;
@@ -701,19 +691,13 @@ footer {
       margin-bottom: 0;
   }
   .menu__link {
-      font-size: 28px;
+      font-size: 25px;
       color: #fff;
       font-weight: 200;
-      /* padding: 2px 0px;
-      margin: 3px; */
       text-align: start;
   }
   .menu__link:hover {
-      /* background-color: #23232336; */
       text-decoration: underline 2px;
-      /* color: #fff;
-      border-radius: .5rem;
-      padding: .5rem .8rem;       */
   }
   main {
     padding: 0px 30px;
@@ -748,19 +732,19 @@ footer {
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto;
-    /* padding: 12px 35px; */
+  }
+  .bground_2.active {
+    display: block;
+  } 
+  .content,
+  .content_2 {
+    margin: 0 auto;
+  } 
+  .bground,
+  .bground_2 {
+    top: 90px;
   }
   
-  .content,
-  .bground_2 {
-    margin: 0 auto;
-  }
-  .bground{
-    top: 90px;
-  }
-  .bground_2{
-    top: 90px;
-  }
   
   .copyrights {
     font-size: 14px;

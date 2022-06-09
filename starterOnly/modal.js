@@ -35,8 +35,9 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
+  clearModal();
   modalbg.style.display = "block";
-  footer.style.display = "none";
+  //footer.style.display = "none";
   document.body.classList.toggle('_lock');
 }
 // close modal event
@@ -44,7 +45,7 @@ const closeModal = document.querySelector(".close");
 closeModal.addEventListener('click', function(e) {
 modalbg.style.display = "none";
 clearModal();
-//console.log('ok');
+console.log('ok');
 })
 
 // Modal de comfirmation
@@ -67,6 +68,7 @@ const form = document.getElementById('form');
    e.preventDefault();
 
    form_verify(); 
+   
    
  })
 
@@ -156,6 +158,9 @@ function nom_verify(nom) {
 // Verification email
 const email = document.getElementById('email');
 email.addEventListener('keyup', e => {
+  email_verify(email);
+})
+email.addEventListener('change', e => {
   email_verify(email);
 })
 
