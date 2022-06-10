@@ -26,26 +26,25 @@ function onMenuLinkClick(e) {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
-const footer = document.querySelector(".copyrights");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// open modal form
 function launchModal() {
   clearModal();
   modalbg.style.display = "block";
-  //footer.style.display = "none";
-  document.body.classList.toggle('_lock');
+  // document.body.classList.toggle('_lock'); 
 }
 // close modal event
 const closeModal = document.querySelector(".close");
 closeModal.addEventListener('click', function(e) {
 modalbg.style.display = "none";
+// document.body.classList.remove('_lock');
 clearModal();
-console.log('ok');
 })
 
 // Modal de comfirmation
@@ -53,11 +52,13 @@ const modalContainer = document.querySelector('.bground_2');
 const closeBtn = document.querySelector('.close_btn');
 const modalTriggers = document.querySelectorAll('.modal-trigger');
 
+
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal));
 
 function toggleModal() {
   modalContainer.classList.toggle("active")
   modalbg.style.display = "none";
+  clearModal();
 }
 
 // La recuperation des elements
@@ -67,9 +68,7 @@ const form = document.getElementById('form');
  form.addEventListener('submit', e => {
    e.preventDefault();
 
-   form_verify(); 
-   
-   
+   form_verify();   
  })
 
 function form_verify() {
@@ -84,7 +83,6 @@ function form_verify() {
   if(prenomCheck && nomCheck && cityCheck && emailCheck && ddnCheck && quantityCheck && checkCheck) {
     console.log('ok');
     toggleModal();
-    // function initialise
     } 
 }
 
@@ -96,7 +94,9 @@ function clearModal(){
   quantity.value = "";
   cityArray.values = "";
   checkbox.value = "";
+
 }
+
 // verification Prenom
 const prenom = document.getElementById('first');
 prenom.addEventListener('keyup', e => {
@@ -213,7 +213,6 @@ function quantity_verify(quantity) {
       return true;
   }
 }
-
 // Verification location
 let cityArray = document.querySelectorAll('input[type="radio"]');
 
@@ -222,7 +221,6 @@ for (const radio of cityArray) {
     cityError.style.visibility = "hidden";
   }
 }
-//
 const cityError = document.querySelector("#city div");
 const radios = document.querySelectorAll('input[type="radio"]:checked')
 
@@ -270,6 +268,7 @@ function setError(input, message) {
   //Ajout de la classe erreur
   formData.className = "formData error";
 }
+
 function setSuccess(input) {
   const formData = input.parentElement;
   formData.className = "formData success";
@@ -289,15 +288,3 @@ function Success(input) {
   //console.log('success');
 }
 
-// //initialisation de tous les champs du formulaire
-// function initializeFields() {
-//   prenom.value = null;
-//   nom.value = null;
-//   email.value = null;
-//   ddn.value = null;
-//   quantity.value = null;
-//   city.checked = false;
-//   checkbox.checked = false;
-//   setSuccess(input)
-//   Success(input);
-// }
