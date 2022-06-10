@@ -39,12 +39,28 @@ function launchModal() {
   modalbg.style.display = "block";
   // document.body.classList.toggle('_lock'); 
 }
+
+function clear(e) {
+  if (document.querySelector('.formData.error') !==null ) {
+    document.querySelector('.formData.error').classList.remove('error');
+  }
+  e.target.className = "error";
+}
 // close modal event
 const closeModal = document.querySelector(".close");
 closeModal.addEventListener('click', function(e) {
-modalbg.style.display = "none";
-// document.body.classList.remove('_lock');
-clearModal();
+  clearModal();
+  modalbg.style.display = "none";
+
+  document.querySelectorAll(".formData.error").forEach(e => e.classList.remove('error'));
+  document.querySelectorAll(".formData.success").forEach(e => e.classList.remove('success'));
+  document.querySelector(".checkbox.error").classList.remove('error');
+  // const DataFirst = document.querySelector(".formData");
+  // if(DataFirst.classList.contains('error')) {
+  //   DataFirst.classList.remove('error');  
+  // }else if(DataFirst.classList.contains('success')){
+  //   DataFirst.classList.remove('success');
+  // }
 })
 
 // Modal de comfirmation
