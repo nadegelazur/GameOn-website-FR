@@ -4,10 +4,13 @@ const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu__body');
 const heroContent = document.querySelector('.hero-content');
 // проверяем существует ли бьект с таким классом
+//vérifier si l'objet avec cette classe existe
 if(iconMenu) {   
     // создаем событие клик по иконке
+    //créer un événement de clic d'icône
     iconMenu.addEventListener("click", function(e) {
         // чтоб не скролилось сайт сзади выдвигающегося меню
+        //pour empêcher le site web de défiler vers l'arrière du menu déroulant
         document.body.classList.toggle('_lock');
         iconMenu.classList.toggle('_active');
         menuBody.classList.toggle('_active');
@@ -29,7 +32,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -40,12 +42,6 @@ function launchModal() {
   // document.body.classList.toggle('_lock'); 
 }
 
-function clear(e) {
-  if (document.querySelector('.formData.error') !==null ) {
-    document.querySelector('.formData.error').classList.remove('error');
-  }
-  e.target.className = "error";
-}
 // close modal event
 const closeModal = document.querySelector(".close");
 closeModal.addEventListener('click', function(e) {
@@ -54,6 +50,8 @@ closeModal.addEventListener('click', function(e) {
 
   document.querySelectorAll(".formData.error").forEach(e => e.classList.remove('error'));
   document.querySelectorAll(".formData.success").forEach(e => e.classList.remove('success'));
+
+  document.querySelector("#city div").style.visibility = "hidden";
   document.querySelector(".checkbox.error").classList.remove('error');
   // const DataFirst = document.querySelector(".formData");
   // if(DataFirst.classList.contains('error')) {
@@ -67,7 +65,6 @@ closeModal.addEventListener('click', function(e) {
 const modalContainer = document.querySelector('.bground_2');
 const closeBtn = document.querySelector('.close_btn');
 const modalTriggers = document.querySelectorAll('.modal-trigger');
-
 
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal));
 
