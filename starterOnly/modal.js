@@ -31,6 +31,7 @@ function onMenuLinkClick(e) {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const heroSection = document.querySelector(".hero-section");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -39,7 +40,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   clearModal();
   modalbg.style.display = "block";
-  // document.body.classList.toggle('_lock'); 
+  heroSection.style.display = "none";
+  document.body.classList.toggle('_lock'); 
 }
 
 // close modal event
@@ -47,7 +49,7 @@ const closeModal = document.querySelector(".close");
 closeModal.addEventListener('click', function(e) {
   clearModal();
   modalbg.style.display = "none";
-
+  heroSection.style.display = "block";
   document.querySelectorAll(".formData.error").forEach(e => e.classList.remove('error'));
   document.querySelectorAll(".formData.success").forEach(e => e.classList.remove('success'));
 
